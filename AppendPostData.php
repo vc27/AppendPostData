@@ -4,8 +4,8 @@
  * @package WordPress
  * @subpackage ParentTheme_VC
  * @license GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
- * @version 1.0
- * @updated 03.15.13
+ * @version 1.1
+ * @updated 03.17.13
  **/
 ####################################################################################################
 
@@ -13,12 +13,13 @@
 
 
 /* 
-$default_metabox = array(
-	'post_type' => array( 'post' ), // required
+Example options array to be given to the init($options) method
+$options = array(
+	'post_type' => array( 'post' ), // Array of post types
 	'custom_fields' => array( // array of post_meta fields
 		array(
-			'meta_key' => 'text',
-			'unique' => 0,
+			'meta_key' => 'some_custom_field_name',
+			'unique' => 1,
 			),
 		),
 	);
@@ -71,6 +72,9 @@ class AppendPostData {
 	 *
 	 * @version 1.0
 	 * @updated 03.15.13
+	 *
+	 * Description:
+	 * Accept an array of arguments to pass along to 'the_post' filter
 	 **/
 	function init( $args ) {
 		
@@ -129,6 +133,9 @@ class AppendPostData {
 	 *
 	 * @version 1.0
 	 * @updated 03.15.13
+	 * 
+	 * Description:
+	 * Append key = value to the 'post' object.
 	 **/
 	function add_to_post( $key, $val = false ) {
 		
@@ -148,6 +155,9 @@ class AppendPostData {
 	 *
 	 * @version 1.0
 	 * @updated 03.15.13
+	 * 
+	 * Description:
+	 * Add incoming arguments to the current object instance.
 	 **/
 	function set_args( $args ) {
 		
@@ -184,6 +194,9 @@ class AppendPostData {
 	 * 
 	 * @version 1.0
 	 * @updated 03.15.13
+	 * 
+	 * Description:
+	 * Filter 'the_post' and return it's value.
 	 **/
 	function the_post( $post ) {
 		
@@ -207,13 +220,17 @@ class AppendPostData {
 	/**
 	 * append_custom_fields
 	 * 
-	 * @version 1.0
+	 * @version 1.1
 	 * @updated 03.15.13
+	 * 
+	 * Description:
+	 * Loop through custom_fields and append each value to the 
+	 * 'post' object.
 	 **/
 	function append_custom_fields() {
 		
 		foreach ( $this->custom_fields as $this->custom_field ) {
-			$this->set_custom_field();
+			$this->set_single_custom_field();
 			$this->add_to_post( $this->meta_key, apply_filters( "append-post-data-$this->post_type", get_post_meta( $this->post->ID, $this->meta_key, $this->unique ), $this ) );
 		}
 		
@@ -225,12 +242,15 @@ class AppendPostData {
 	
 	
 	/**
-	 * set_custom_field
+	 * set_single_custom_field
 	 * 
-	 * @version 1.0
+	 * @version 1.1
 	 * @updated 03.15.13
+	 * 
+	 * Description:
+	 * set single custom field value with in the current object.
 	 **/
-	function set_custom_field() {
+	function set_single_custom_field() {
 		
 		if ( is_array( $this->custom_field ) ) {
 			foreach ( $this->custom_field as $key => $val ) {
@@ -238,7 +258,7 @@ class AppendPostData {
 			}
 		}
 		
-	} // end function set_custom_field
+	} // end function set_single_custom_field
 	
 	
 	
@@ -261,6 +281,9 @@ class AppendPostData {
 	 * 
 	 * @version 1.0
 	 * @updated 03.15.13
+	 * 
+	 * Description:
+	 * Set post type bool with in object for usage and return it's value.
 	 **/
 	function is_post_type() {
 		
@@ -284,6 +307,9 @@ class AppendPostData {
 	 * 
 	 * @version 1.0
 	 * @updated 03.15.13
+	 * 
+	 * Description:
+	 * Set custom fields bool with in object for usage and return it's value.
 	 **/
 	function have_custom_fields() {
 		

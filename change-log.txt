@@ -1,4 +1,9 @@
 == 1.0 ==
+03.17.13
+- Update readme
+- Update a few other small comments
+
+== 1.0 ==
 03.16.13
 - Init commit
 - added readme and change-log
