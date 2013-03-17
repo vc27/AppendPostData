@@ -2,6 +2,7 @@
 
 A simple class with a helper function for appending custom fields to the $post object via "the_post" filter. I put this together pretty quick so I'm positive there is room for improvement.
 
+[https://github.com/vc27/AppendPostData/](https://github.com/vc27/AppendPostData/)
 
 ## Info ##
 The purpose of this class is to append custom field values to the post object. Using this method will lessen the amount of code needed with in "the loop". Rather than writing code with "the loop" you may utilize this class and it's filter to append items to the post object for usage like the following.
