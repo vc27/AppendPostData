@@ -33,7 +33,7 @@ The purpose of this class is to append custom field values to the post object. U
 	
 	/**
 	 * $post usage
-	 * You would not have access to the following values with in the post object.
+	 * You would now have access to the following values with in the post object.
 	 **/
 	$post->some_customfield_name; 
 	$post->another_awesome_customfield;
@@ -67,7 +67,7 @@ The purpose of this class is to append custom field values to the post object. U
 	
 	/**
 	 * $post usage
-	 * You would not have access to the following values with in the post object.
+	 * You would now have access to the following values with in the post object.
 	 **/
 	$post->some_customfield_name; 
 	$post->another_awesome_customfield;
