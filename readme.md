@@ -31,11 +31,6 @@ The purpose of this class is to append custom field values to the post object. U
 	append__post_data( $option );
 	
 	
-	// Class Usage
-	$AppendPostData = new AppendPostData();
-	$AppendPostData->init( $options );
-	
-	
 	/**
 	 * $post usage
 	 * You would not have access to the following values with in the post object.
