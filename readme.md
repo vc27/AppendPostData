@@ -43,3 +43,37 @@ The purpose of this class is to append custom field values to the post object. U
 	$post->another_awesome_customfield;
 	
 </code></pre>
+
+
+## Class Usage ##
+<pre><code>
+	
+	// Options Array
+	$option = array(
+		'post_type' => array( 'post' ), // Array of post_types
+		'custom_fields' => array( // array of post_meta fields
+			array(
+				'meta_key' => 'some_customfield_name',
+				'unique' => 1,
+				),
+			array(
+				'meta_key' => 'another_awesome_customfield',
+				'unique' => 1,
+				),
+			),
+		);
+	
+	
+	// Class Usage
+	$AppendPostData = new AppendPostData();
+	$AppendPostData->init( $options );
+	
+	
+	/**
+	 * $post usage
+	 * You would not have access to the following values with in the post object.
+	 **/
+	$post->some_customfield_name; 
+	$post->another_awesome_customfield;
+	
+</code></pre>
